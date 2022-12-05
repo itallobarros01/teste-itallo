@@ -1,0 +1,85 @@
+    <link href="css/racasStyle.css" rel="stylesheet">
+    <div class="container">
+      <h1>Cadastrar Nova Raça</h1>
+      <p>Complete o formulário para cadastrar uma nova raça.</p>
+      <hr>
+  
+      <label for="ID"><b>Id</b></label>
+      <input type="number" placeholder="Digite o ID da raça" name="id" id="idRaca">
+  
+      <label for="Nome"><b>Nome</b></label>
+      <input type="nome" placeholder="Digite o nome da raça" name="nome" id="nomeRaca">
+
+      <button type="submit" class="cadastrarBtn" onclick="myFunction()">Cadastrar</button>
+      <div id="snackbar">Raça cadastrada com sucesso!</div>
+      <div id="snackbarNo">Por gentileza preencher todos os campos!</div>
+      <hr>
+  
+      <h1>Raças já cadastradas:</h1>
+
+      <table id="myTable">
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>YorkShire</td>
+
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Pastor Alenmão</td>
+
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Malamute do Alaska</td>
+
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Pit Bull</td>
+        </tr>
+      </table>   
+    </div>
+
+    <script>
+        var qtde = 4
+        //Mensagens
+        function snackbar() {
+            var x = document.getElementById("snackbar");
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
+        function snackbarNo() {
+            var x = document.getElementById("snackbarNo");
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
+        function myFunction() {
+
+            //Pega os elementos e valores do HTML
+            var idRaca = document.getElementById("idRaca").value
+            var nomeRaca = document.getElementById("nomeRaca").value
+
+            //Verifica se os campos estão preenchidos
+            if (!idRaca || !nomeRaca){
+                this.snackbarNo();
+            }
+            else{
+                //Cria variável para a tabela
+                var table = document.getElementById("myTable");
+                qtde += 1;
+                var row = table.insertRow(qtde);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                //Preenche  informações na tablela
+                cell1.innerHTML = document.getElementById("idRaca").value;
+                cell2.innerHTML = document.getElementById("nomeRaca").value;
+                //Mensgem para cadastrar 
+                this.snackbar();
+        }
+        }
+    </script>
+ 

@@ -1,0 +1,109 @@
+<link href="css/caninosStyle.css" rel="stylesheet">
+<div class="container">
+  <h1>Cadastrar Novo Canino</h1>
+  <p>Complete o formulário para cadastrar um novo canino.</p>
+  <hr>
+
+  <label for="ID"><b>Id</b></label>
+  <input type="number" placeholder="Digite o ID do cão" name="id" id="idRaca">
+
+  <label for="Nome"><b>Nome</b></label>
+  <input type="nomeCao" placeholder="Digite o nome do cão" name="nomeCao" id="nomeCao">
+
+  <b>Sexo</b>
+  <select name="sexo" class="selectBox" id="sexo">
+    <option value="Fêmea">Fêmea</option>
+    <option value="Macho">Macho</option>
+    <option value="Macho">Outro</option>
+  </select>
+  
+  <b>Raça</b>
+  <select name="raca" class="selectBox" id="raca">
+    <option value="Fêmea">Yorkshire</option>
+    <option value="Macho">Pastor Alemão</option>
+    <option value="Macho">Malamute do Alaska</option>
+    <option value="Macho">Pit Bull</option>
+  </select>
+  
+
+  <button type="submit" class="cadastrarBtn" onclick="myFunction()">Cadastrar</button>
+  <div id="snackbar">Cão cadastrado com sucesso!</div>
+  <div id="snackbarNo">Por gentileza preencher todos os campos!</div>
+  <hr>
+
+  <h1>Cães já cadastrados:</h1>
+
+  <table id="myTable">
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Sexo</th>
+      <th>Raça </th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Bob</td>
+      <td>Macho</td>
+      <td>Yorkshire</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Kiteana</td>
+      <td>Fêmea</td>
+      <td>Pit Bull</td>
+    </tr>
+    <tr>
+      <td>3</td>
+        <td>Rebeca</td>
+        <td>Fêmea</td>
+        <td>Malamute do Alaska</td>
+    </tr>
+  </table>   
+</div>
+
+<script>
+    var qtde = 3
+    //Mensagens
+    function snackbar() {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
+    function snackbarNo() {
+        var x = document.getElementById("snackbarNo");
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
+    function myFunction() {
+
+        //Pega os elementos e valores do HTML
+        var idRaca = document.getElementById("idRaca").value
+        var nomeCao = document.getElementById("nomeCao").value
+        var sexo = document.getElementById("sexo").value
+        var nomeRaca = document.getElementById("raca").value
+
+        //Verifica se os campos estão preenchidos
+        if (!idRaca || !nomeRaca || !sexo || !raca){
+            this.snackbarNo();
+        }
+        else {
+
+            //Cria variável para a tabela
+            var table = document.getElementById("myTable");
+            qtde += 1;
+            var row = table.insertRow(qtde);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+
+            //Preenche  informações na tablela
+            cell1.innerHTML = idRaca;
+            cell2.innerHTML = nomeCao;
+            cell3.innerHTML = sexo;
+            cell4.innerHTML = nomeRaca;
+            //Mensgem para cadastro realizado com sucesso
+            this.snackbar();
+        }
+    }
+</script>
